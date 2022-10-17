@@ -25,9 +25,9 @@
   "scripts": {
     "clean": "rimraf ./lib/ && rimraf ./dist/",
     "compile": "npm run clean && npm run compile:lib && npm run compile:dist && npm run compile:styles",
-    "compile:lib": "coffee --compile -o ./lib/ ./src/coffee/card.coffee && node-sass ./src/scss/card.scss -o lib/ && replace '../scss/card.scss' './card.css' lib/card.js",
+    "compile:lib": "coffee --compile -o ./lib/ ./src/coffee/card.coffee && sass ./src/scss/card.scss lib/card.css && replace '../scss/card.scss' './card.css' lib/card.js",
     "compile:dist": "npm run env NODE_ENV=production && webpack",
-    "compile:styles": "node-sass ./src/scss/card.scss -o ./dist/ --output-style compressed",
+    "compile:styles": "sass ./src/scss/card.scss ./dist/card.css --style compressed",
     "development": "webpack-dev-server --hot --inline",
     "preversion": "npm run compile",
     "prepublish": "npm run env NODE_ENV=production && npm run compile",
@@ -42,18 +42,18 @@
     "event-stream": "^4.0.1",
     "glob": "^8.0.3",
     "jquery": "^3.6.0",
-    "node-sass": "^4.14.1",
     "nodemon": "^2.0.7",
     "replace": "^1.2.1",
     "rimraf": "^3.0.2",
     "run-sequence": "~2.2.1",
+    "sass": "^1.55.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^2.0.0",
     "underscore": "^1.12.1",
     "vinyl-source-stream": "^2.0.0",
-    "webpack": "^4.46.0",
+    "webpack": "^5.74.0",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
     "node.extend": "~2.0.2",
